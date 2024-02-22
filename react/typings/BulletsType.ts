@@ -5,7 +5,7 @@ export type BulletSchema = {
 }
 
 export type LinkProps = {
-    url: string
+    url: string,
     attributeNofollow?: boolean
     attributetitle?: string
     openNewTab?: boolean

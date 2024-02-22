@@ -1,12 +1,12 @@
 {
     "definitions": {
         "BulletGroup": {
-            "title": "Bullets group",
+            "title": "Bullets Group",
             "type": "array",
             "items": {
                 "properties": {
                     "image": {
-                        "title": "Imagen",
+                        "title": "Image",
                         "default": "",
                         "$ref": "app:vtex.native-types#/definitions/url",
                         "widget": {

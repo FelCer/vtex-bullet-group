@@ -1,5 +1,5 @@
 import React from "react";
-import { BulletsSchema, BulletSchema } from "../typings/BulletsType";
+import { BulletSchema, BulletsSchema } from "../typings/BulletsType";
 import Bullet from "./Bullet";
 
 export const BulletMap = (bullets: BulletsSchema) => {
@@ -8,8 +8,8 @@ export const BulletMap = (bullets: BulletsSchema) => {
         attributeNofollow: false,
         attributetitle: "",
         openNewTab: false,
-        newTab: false,
-    };
+        newTab: false
+    }
 
     return bullets.map((bullet: BulletSchema, index) => {
         return <Bullet
@@ -18,5 +18,5 @@ export const BulletMap = (bullets: BulletsSchema) => {
             title={bullet.title}
             link={(bullet.link ? bullet.link : emptyLink)}
         />
-    });
+    })
 };

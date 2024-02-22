@@ -1,33 +1,36 @@
-import React, { PropsWithChildren } from "react"
+import React, { PropsWithChildren } from "react";
 import { BulletGroupProp } from "../interfaces/BulletsInterfaces";
 import { BulletMap } from "./BulletMap";
-import { useDevice } from 'vtex.device-detector'
-import { useListContext, ListContextProvider } from 'vtex.list-context'
 import { useCssHandles } from 'vtex.css-handles'
+import { useListContext, ListContextProvider } from 'vtex.list-context'
+import { useDevice } from 'vtex.device-detector'
 
-const BulletsGroup = ({ bullets, children }: PropsWithChildren<BulletGroupProp>) => {
-    const { isMobile } = useDevice();
+const BulletGroup = ({ bullets, children }: PropsWithChildren<BulletGroupProp>) => {
     const { list } = useListContext() || []
+    const { isMobile } = useDevice();
     const CSS_HANDLES = [
         'bullet__container'
     ]
+
     const handles = useCssHandles(CSS_HANDLES)
 
-    const bulletsGroup = BulletMap(bullets)
+    const bulletsGroup = BulletMap(bullets);
+    const newBulletGroup = list.concat(bulletsGroup)
 
-    const newBulletsGroup = list.concat(bulletsGroup)
     return (
-        <ListContextProvider list={newBulletsGroup}>
+        <ListContextProvider list={newBulletGroup}>
             {
-                isMobile ?
+                isMobile
+                    ?
                     <div className={handles.bullet__container}>
                         {bulletsGroup}
                     </div>
                     :
                     children
             }
+
         </ListContextProvider>
     )
 }
 
-export default BulletsGroup;
+export default BulletGroup;
